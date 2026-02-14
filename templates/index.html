@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header">
+      <img class="header-logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo" onerror="this.style.display='none'">
+      <div class="title-wrap">
+        <h1 class="app-title">Easy Passport Photo Maker</h1>
+        <p class="app-sub">Create professional 4×6 passport photo sheets — fast & simple</p>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- LEFT: Controls + Preview -->
+      <section class="panel panel-left">
+        <h2>Select and Edit Photo</h2>
+
+        <form id="uploadForm" class="upload-form" enctype="multipart/form-data" novalidate>
+          <label class="file-label">
+            <input type="file" id="photoInput" name="photo" accept="image/*" />
+            <span>Select Photo</span>
+          </label>
+
+          <div class="controls">
+            <button type="button" id="cropOpenBtn" class="btn">Crop</button>
+            <button type="submit" id="generateBtn" class="btn primary">Generate</button>
+            <button type="button" id="resetBtn" class="btn">Reset</button>
+          </div>
+
+          <div id="selectedPreviewContainer" class="selected-preview hidden">
+            <p class="muted">Selected and Edited Photo</p>
+            <img id="selectedPreview" alt="Selected preview" />
+          </div>
+
+          <div id="progressBar" class="progress hidden" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div id="progressFill" class="progress-fill" style="width:0%"></div>
+          </div>
+        </form>
+
+        <!-- Preview area -->
+        <div id="previewContainer" class="preview-container hidden">
+          <h3>Passport Photo 4×6 Preview</h3>
+          <div class="preview-frame">
+            <img id="previewImage" alt="Generated preview" />
+          </div>
+          <div class="preview-actions">
+            <button id="downloadBtn" class="btn primary">Download JPG</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Gallery (uploaded images) -->
+      <aside id="galleryContainer" class="panel panel-right" aria-labelledby="galleryHeading">
+        <h2 id="galleryHeading">Uploaded Images</h2>
+        <div id="thumbs" class="thumbs" aria-live="polite">
+          <!-- thumbnails injected by static/script.js -->
+        </div>
+      </aside>
+    </main>
+
+    <!-- Crop modal (kept minimal here; populated by script) -->
+    <div id="cropModal" class="crop-modal hidden" role="dialog" aria-modal="true">
+      <div class="crop-content">
+        <header class="crop-header">
+          <h3 id="cropTitle">Crop Image</h3>
+          <button id="cropClose" class="btn">Close</button>
+        </header>
+        <div class="crop-body">
+          <canvas id="cropCanvas"></canvas>
+        </div>
+        <footer class="crop-footer">
+          <input id="saveFilename" placeholder="cropped.png" />
+          <label>DPI <input id="dpiInput" type="number" value="300" min="72" /></label>
+          <div id="cropDims">W × H: — mm</div>
+          <div class="crop-actions">
+            <button id="saveCropBtn" class="btn primary">Save Crop</button>
+            <button id="cancelCropBtn" class="btn">Cancel</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <small>Use the gallery on the right to pick previously uploaded images.</small>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
