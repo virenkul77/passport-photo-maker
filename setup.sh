@@ -22,13 +22,14 @@ fi
 echo "⚙️  Activating virtual environment..."
 source "$VENV_DIR/bin/activate"
 
-# 3️⃣ Upgrade pip
-echo "⬆️  Upgrading pip..."
-pip3 install --upgrade pip
+# 3️⃣ Upgrade pip, setuptools, and wheel
+echo "⬆️  Upgrading pip, setuptools, and wheel..."
+pip3 install --upgrade pip setuptools wheel
 
-# 4️⃣ Install required libraries
+# 4️⃣ Install required libraries (using only binary wheels to avoid build issues)
 echo "📦 Installing required Python packages..."
-pip3 install flask pillow rembg numpy torch transformers opencv-python onnxruntime
+pip3 install --only-binary :all: flask pillow opencv-python onnxruntime
+pip3 install rembg
 
 # 5️⃣ Freeze requirements
 echo "🧾 Saving dependencies to requirements.txt..."

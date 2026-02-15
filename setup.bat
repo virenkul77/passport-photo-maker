@@ -24,13 +24,14 @@ REM 2. Activate virtual environment
 echo Activating virtual environment...
 call "%VENV_DIR%\Scripts\activate.bat"
 
-REM 3. Upgrade pip
-echo Upgrading pip...
-python -m pip install --upgrade pip
+REM 3. Upgrade pip, setuptools, and wheel
+echo Upgrading pip, setuptools, and wheel...
+python -m pip install --upgrade pip setuptools wheel
 
-REM 4. Install required libraries
+REM 4. Install required libraries (using only binary wheels to avoid build issues)
 echo Installing required Python packages...
-pip install flask pillow rembg numpy torch transformers opencv-python onnxruntime
+pip install --only-binary :all: flask pillow opencv-python onnxruntime
+pip install rembg
 
 REM 5. Freeze requirements
 echo Saving dependencies to requirements.txt...
