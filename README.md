@@ -1,6 +1,6 @@
-                    EASY PASSPORT PHOTO MAKER
-          Create Professional 4×6 Passport Photo Sheets — Fast & Simple
+EASY PASSPORT PHOTO MAKER
 ================================================================================
+Create Professional 4×6 Passport Photo Sheets — Fast & Simple
 
 PROJECT OVERVIEW
 ================================================================================
@@ -271,5 +271,4 @@ NOTES
 
 
 For more information or updates, check the project folder regularly.
-Last Updated: February 2026
-================================================================================
+Last Updated: February 2026.
