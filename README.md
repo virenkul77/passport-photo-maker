@@ -109,22 +109,6 @@ The application requires the following Python packages:
 For a complete list of dependencies, see requirements.txt
 
 
-FILE STRUCTURE
-================================================================================
-PassportPhoto/
-├── app.py                 - Main Flask application
-├── requirements.txt       - Python dependencies list
-├── setpup.sh             - Automated setup script
-├── setpup-back.sh        - Backup setup script
-├── README.txt            - This file
-├── static/
-│   ├── script.js         - Frontend JavaScript
-│   └── style.css         - Styling and layout
-├── templates/
-│   └── index.html        - Web interface HTML
-└── uploads/              - Directory for uploaded photos (auto-created)
-
-
 USAGE GUIDE
 ================================================================================
 
